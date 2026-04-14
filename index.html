@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Mir Md Raihan | Web Designer & Developer</title>
+  <title>MIR MD RAIHAN | Web Designer & Developer</title>
   <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS CSS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -114,7 +115,7 @@
     .logo {
       font-size: 1.8rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      background: linear-gradient(135deg, var(--accent), #2f3cf8);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -152,38 +153,93 @@
       cursor: pointer;
     }
 
-    /* Hero */
+    /* Hero Section - New Split Layout (Left Text + Right Image) */
     .hero {
       min-height: 90vh;
       display: flex;
       align-items: center;
-      text-align: center;
+      padding: 60px 0;
     }
+    .hero .container {
+      width: 100%;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-left {
+      flex: 1.2;
+      text-align: left;
+    }
+    .hero-right {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 50%; 
+  background: linear-gradient(135deg, var(--accent), oklab(44.421% -0.02272 -0.2934));
+  padding: 5px; 
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease;
+}
 
-    .hero-content h1 {
+.profile-image-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.profile-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%; 
+  object-fit: contain;
+  aspect-ratio: 1 / 1; 
+}
+    .profile-image {
+      width: 100%;
+      border-radius: 38% 62% 32% 68% / 52% 42% 58% 48%;
+      display: block;
+      background: var(--bg-secondary);
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      transition: all 0.3s;
+    }
+    /* placeholder avatar if image fails, but we'll use a modern avatar illustration as fallback */
+    .hero-left h1 {
       font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
+      line-height: 1.2;
     }
-
-    .hero-content .highlight {
+    .hero-left .highlight {
       color: var(--accent);
     }
-
     .typing-text {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin: 1rem 0;
       color: var(--text-secondary);
+      font-weight: 500;
     }
-
+    .hero-desc {
+      max-width: 550px;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
     .btn-group {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
-      justify-content: center;
       flex-wrap: wrap;
     }
-
     .btn {
       padding: 0.8rem 2rem;
       border-radius: 40px;
@@ -194,39 +250,34 @@
       align-items: center;
       gap: 8px;
     }
-
     .btn-primary {
       background: var(--accent);
       color: white;
       border: none;
     }
-
     .btn-primary:hover {
       background: var(--accent-hover);
       transform: translateY(-3px);
       box-shadow: 0 10px 20px -5px var(--accent);
     }
-
     .btn-outline {
       border: 2px solid var(--accent);
       color: var(--accent);
       background: transparent;
     }
-
     .btn-outline:hover {
       background: var(--accent);
       color: white;
       transform: translateY(-3px);
     }
 
-    /* Cards */
+    /* Cards & rest styles (keeping original robust) */
     .skills-grid, .services-grid, .projects-grid, .values-grid, .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-top: 1rem;
     }
-
     .skill-card, .service-card, .project-card, .value-card, .cert-card {
       background: var(--card-bg);
       border-radius: 24px;
@@ -234,15 +285,12 @@
       box-shadow: var(--shadow-sm);
       transition: all 0.3s;
       border: 1px solid var(--border-light);
-      backdrop-filter: blur(2px);
     }
-
     .skill-card:hover, .service-card:hover, .project-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-md);
       border-color: var(--accent);
     }
-
     .progress-bar {
       background: var(--border-light);
       border-radius: 20px;
@@ -250,7 +298,6 @@
       height: 8px;
       overflow: hidden;
     }
-
     .progress-fill {
       background: var(--accent);
       width: 0%;
@@ -258,8 +305,6 @@
       border-radius: 20px;
       transition: width 1.2s ease;
     }
-
-    /* Timeline */
     .timeline {
       position: relative;
       max-width: 800px;
@@ -283,8 +328,6 @@
       background: var(--accent);
       border-radius: 50%;
     }
-
-    /* Experience cards */
     .exp-card {
       background: var(--card-bg);
       border-radius: 20px;
@@ -293,8 +336,6 @@
       box-shadow: var(--shadow-sm);
       transition: 0.2s;
     }
-
-    /* Contact form */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -314,15 +355,12 @@
       gap: 15px;
       margin-bottom: 25px;
     }
-
     footer {
       background: var(--bg-secondary);
       padding: 2rem;
       text-align: center;
       border-top: 1px solid var(--border-light);
     }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -345,11 +383,31 @@
       .contact-grid {
         grid-template-columns: 1fr;
       }
-      .hero-content h1 {
-        font-size: 2.5rem;
+      .hero-left h1 {
+        font-size: 2.2rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left {
+        text-align: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .profile-image-wrapper {
+        max-width: 240px;
+        margin: 0 auto;
       }
     }
-
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -370,12 +428,9 @@
     .back-to-top.show {
       opacity: 1;
     }
-
-    /* floating shapes */
-    .floating-shape {
-      position: absolute;
-      z-index: -1;
-      opacity: 0.1;
+    /* fix progress fill animation on scroll */
+    .skill-card .progress-fill {
+      width: 0%;
     }
   </style>
 </head>
@@ -384,7 +439,7 @@
 <!-- Navbar -->
 <nav class="navbar">
   <div class="nav-container">
-    <div class="logo">MR</div>
+    <div class="logo">Rashed Raihan</div>
     <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
@@ -400,16 +455,25 @@
 </nav>
 
 <main>
-  <!-- Hero Section -->
+  <!-- Hero Section: Left side name + bio, Right side picture (fixed layout) -->
   <section id="home" class="hero">
     <div class="container" data-aos="fade-up">
-      <div class="hero-content">
-        <h1>Mir Md <span class="highlight">Raihan</span></h1>
-        <div class="typing-text" id="typingEffect"></div>
-        <p class="hero-desc" style="max-width: 600px; margin: 1rem auto;">Crafting stunning web experiences, training future developers & building digital solutions.</p>
-        <div class="btn-group">
-          <a href="#" class="btn btn-primary" id="downloadCVbtn"><i class="fas fa-download"></i> Download CV</a>
-          <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+      <div class="hero-grid">
+        <div class="hero-left" data-aos="fade-right">
+          <h1>MIR MD <span class="highlight">RAIHAN</span></h1>
+          <div class="typing-text" id="typingEffect"></div>
+          <p class="hero-desc">Crafting stunning web experiences, training future developers & building digital solutions. 5+ years of turning ideas into reality.</p>
+          <div class="btn-group">
+            <a href="Image/MD Rashad Raihan CV (updated).pdf" class="btn btn-primary" id="downloadCVbtn" target="_blank"> <i class="fas fa-download"></i> Download CV</a>
+           
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-right" data-aos="fade-left">
+          <div class="profile-image-wrapper">
+            <!-- Professional modern avatar / custom image placeholder -->
+            <img class="profile-image" id="profileImg" src="Image/MD RAIHAN.png">
+          </div>
         </div>
       </div>
     </div>
@@ -421,19 +485,29 @@
       <h2 class="section-title" data-aos="fade-right">About Me</h2>
       <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
         <div data-aos="fade-right">
-          <p style="font-size: 1.1rem; margin-bottom: 1rem;">I’m Mir Md Raihan, a passionate Web Designer, Trainer, and Developer with 5+ years of experience in building modern web applications and mentoring aspiring developers.</p>
-          <p>I believe in clean code, intuitive design, and continuous learning. My goal is to craft digital experiences that are both functional and aesthetically pleasing.</p>
-          <div style="margin-top: 2rem;">
-            <div class="info-item"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Faridganj, Chandpur, Bangladesh</div>
-            <div class="info-item"><i class="fas fa-envelope" style="color: var(--accent);"></i> raihan@example.com</div>
-            <div class="info-item"><i class="fas fa-phone" style="color: var(--accent);"></i> +880 1XXX XXXXXX</div>
+          <p style="font-size: 1.1rem; margin-bottom: 1rem;">Hi, I'm a passionate Web Designer & Developer with a strong focus on creating modern, responsive, and user-friendly websites. </p>
+<p>I specialize in designing visually appealing interfaces and developing high-performance websites that help businesses grow online. My goal is not just to build a website, but to create a digital experience that attracts, engages, and converts visitors into customers.</p><br>
+<p>I have experience working with various technologies and tools, ensuring that every project I deliver is clean, fast, and optimized for all devices.</p>
+<br>
+✔ Clean & Professional Design <br>
+✔ Responsive (Mobile-Friendly) Layout<br>
+✔ Fast & SEO-Friendly Website<br>
+✔ Client Satisfaction is My Priority<br><br>
+
+I believe in clear communication, timely delivery, and long-term client relationships. If you're looking for a reliable Web Designer & Developer who can turn your ideas into reality, I'm here to help.
+
+Let’s work together and build something amazing!</p>
+          <div style="margin-top: 3rem;">
+            <div class="info-item"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Faridgonj Upzilla, Faridganj, Chandpur, Bangladesh</div>
+            <div class="info-item"><i class="fas fa-envelope" style="color: var(--accent);"></i> techrashad.03.com</div>
+            <div class="info-item"><i class="fas fa-phone" style="color: var(--accent);"></i> +8801407-774872 (Whatsapp), +8801620-159962</div>
           </div>
         </div>
         <div data-aos="fade-left">
-          <div style="background: var(--accent); border-radius: 32px; padding: 2rem; text-align: center; color: white;">
-            <i class="fas fa-laptop-code" style="font-size: 3rem;"></i>
-            <h3 style="margin: 1rem 0;">6+ Years Experience</h3>
-            <p>200+ Projects Completed | 50+ Students Trained</p>
+          <div style="background: var(--accent); border-radius: 30px; padding: 3rem; text-align: center; color: white;">
+            <i class="fas fa-laptop-code" style="font-size: 5rem;"></i>
+            <h3 style="margin: 1rem 0;">5+ Years Experience</h3>
+            <p>100+ Projects Completed | 250+ Students Trained</p>
           </div>
         </div>
       </div>
@@ -445,22 +519,22 @@
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
       <div class="skills-grid">
-        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-html5" style="font-size: 2rem; color:#e34c26;"></i><h3>HTML5 & CSS3</h3><div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div></div>
-        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-js" style="font-size: 2rem; color:#f7df1e;"></i><h3>JavaScript / ES6</h3><div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div></div>
-        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-react" style="font-size: 2rem; color:#61dafb;"></i><h3>React.js</h3><div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div></div>
-        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-figma" style="font-size: 2rem; color:#a259ff;"></i><h3>UI/UX Design</h3><div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-html5" style="font-size: 2rem; color:#e34c26;"></i><h3>HTML5 & CSS3</h3><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-js" style="font-size: 2rem; color:#f7df1e;"></i><h3>JavaScript / ES6</h3><div class="progress-bar"><div class="progress-fill" data-width="90"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-react" style="font-size: 2rem; color:#61dafb;"></i><h3>React.js</h3><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-php" style="font-size: 2rem; color:#a259ff;"></i><h3>PHP</h3><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Education (Timeline) -->
+  <!-- Education Timeline -->
   <section id="education">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Academic Journey</h2>
       <div class="timeline">
-        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>🎓 BA (Honours)</h3><p>University of Dhaka | 2016 - 2020</p><span>Computer Science & Engineering</span></div>
-        <div class="timeline-item" data-aos="fade-left"><div class="timeline-dot"></div><h3>📘 Higher Secondary (HSC)</h3><p>Chandpur Govt College | 2014 - 2016</p><span>Science Group</span></div>
-        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>📖 Secondary School (SSC)</h3><p>Faridganj Pilot High School | 2012 - 2014</p><span>GPA 5.00</span></div>
+        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>🎓 BA (Honours)</h3><p>National University Of Bangladesh | Session: 2020-2021</p><span>Department of History & English Literature</span></div>
+        <div class="timeline-item" data-aos="fade-left"><div class="timeline-dot"></div><h3>📘 Higher Secondary (HSC)</h3><p>Gridakalinda Hazera Hasmot Degree Collage | Session: 2018-2019</p><span>Science Group</span></div>
+        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>📖 Secondary School (SSC)</h3><p>Faridganj A.R. Pilot High School | Chandpur </p><span>Session: 2016-2017</span></div>
       </div>
     </div>
   </section>
@@ -470,9 +544,9 @@
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
       <div data-aos="fade-up">
-        <div class="exp-card"><h3><i class="fas fa-chalkboard-user"></i> Assistant Director (PR Academy)</h3><p>2022 - Present | Leading training programs, curriculum design & web development workshops.</p></div>
-        <div class="exp-card"><h3><i class="fas fa-laptop-code"></i> Lead Web Trainer</h3><p>2021 - Now | Mentored 100+ students in full-stack web technologies.</p></div>
-        <div class="exp-card"><h3><i class="fas fa-school"></i> Senior Teacher (ICT)</h3><p>2020 - 2022 | Taught programming & web design at reputed institute.</p></div>
+        <div class="exp-card"><h3><i class="fas fa-chalkboard-user"></i> Assistant Director (PR Academy)</h3><p>2022 - 2025 | Leading training programs, curriculum design & web development workshops.</p></div>
+        <div class="exp-card"><h3><i class="fas fa-laptop-code"></i> Lead Web Trainer</h3><p>2021 - 2025 | Mentored 250+ students in full-stack web technologies.</p></div>
+        <div class="exp-card"><h3><i class="fas fa-school"></i> Senior Teacher (ICT)</h3><p>2021 - 2025 | Taught programming & web design at reputed institute.</p></div>
       </div>
     </div>
   </section>
@@ -483,13 +557,14 @@
       <h2 class="section-title" data-aos="fade-up">What I Do</h2>
       <div class="services-grid">
         <div class="service-card" data-aos="flip-left"><i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Web Development</h3><p>Modern, responsive websites & web apps.</p></div>
-        <div class="service-card" data-aos="flip-left"><i class="fas fa-paintbrush" style="font-size: 2.5rem; color: var(--accent);"></i><h3>UI/UX Design</h3><p>User-centered design with smooth animations.</p></div>
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-pencil-ruler" style="font-size: 2.5rem; color: var(--accent);"></i><h3>UI/UX Design</h3><p>User-centered design with smooth animations.</p></div>
         <div class="service-card" data-aos="flip-left"><i class="fas fa-chalkboard-user" style="font-size: 2.5rem; color: var(--accent);"></i><h3>IT Training</h3><p>Corporate & individual web design training.</p></div>
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-chalkboard-user" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Graphic Design</h3><p>Corporate & Social Media Design.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects" style="background: var(--bg-secondary);">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Recent Projects</h2>
@@ -506,14 +581,15 @@
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Certifications</h2>
       <div class="cert-grid">
-        <div class="cert-card" data-aos="fade-right"><i class="fab fa-google"></i><h3>Google UX Design</h3><p>Coursera - 2023</p></div>
+        <div class="cert-card" data-aos="fade-right"><i class="fab fa-google fa-2x"></i><h3>Google UX Design</h3><p>Coursera - 2023</p></div>
         <div class="cert-card" data-aos="fade-left"><i class="fab fa-meta"></i><h3>Meta Frontend Developer</h3><p>Meta Credentials</p></div>
-        <div class="cert-card" data-aos="fade-up"><i class="fas fa-chart-line"></i><h3>JavaScript Algorithms</h3><p>freeCodeCamp</p></div>
+        <div class="cert-card" data-aos="fade-up"><i class="fas fa-chart-line fa-2x"></i><h3>JavaScript Algorithms</h3><p>freeCodeCamp</p></div>
+      <div class="cert-card" data-aos="fade-up"><i class="fab fa-android fa-2x"></i><h3>Android Application Development</h3><p>Government Training Program</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Values -->
+  <!-- Core Values -->
   <section id="values" style="background: var(--bg-secondary);">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Core Values</h2>
@@ -521,6 +597,7 @@
         <div class="value-card" data-aos="flip-up"><i class="fas fa-handshake fa-2x"></i><h3>Integrity</h3><p>Honest & transparent work ethic.</p></div>
         <div class="value-card" data-aos="flip-up"><i class="fas fa-brain fa-2x"></i><h3>Continuous Learning</h3><p>Always upgrading skills.</p></div>
         <div class="value-card" data-aos="flip-up"><i class="fas fa-lightbulb fa-2x"></i><h3>Creativity</h3><p>Unique design solutions.</p></div>
+        <div class="value-card" data-aos="flip-up"><i class="fas fa-user-check fa-2x"></i><h3>Client-Centric Approach</h3><p>Putting client needs first and delivering solutions that solve real problems.</p></div>
       </div>
     </div>
   </section>
@@ -531,16 +608,16 @@
       <h2 class="section-title" data-aos="fade-up">Let’s Connect</h2>
       <div class="contact-grid">
         <div data-aos="fade-right">
-          <div class="info-item"><i class="fas fa-map-marker-alt fa-lg"></i> Faridganj, Chandpur, Bangladesh</div>
-          <div class="info-item"><i class="fas fa-envelope fa-lg"></i> raihan@example.com</div>
-          <div class="info-item"><i class="fas fa-phone-alt fa-lg"></i> +880 1234 567890</div>
+          <div class="info-item"><i class="fas fa-map-marker-alt fa-lg"></i> In Front of Faridganj Upzilla Gate, Chandpur, Bangladesh</div>
+          <div class="info-item"><i class="fas fa-envelope fa-lg"></i> techrashad.03@gmail.com</div>
+          <div class="info-item"><i class="fas fa-phone-alt fa-lg"></i> +8801407-774872 (Whatsapp)</div>
           <iframe src="https://maps.google.com/maps?q=Faridganj%2C%20Chandpur&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border-radius: 24px; border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         <div data-aos="fade-left">
           <form action="https://formspree.io/f/xqapgnkj" method="POST" id="contactForm">
-            <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-            <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div>
-            <div class="form-group"><textarea name="message" rows="4" placeholder="Your Message"></textarea></div>
+            <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div><br>
+            <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div><br>
+            <div class="form-group"><textarea name="message" rows="4" placeholder="Your Message"></textarea></div><br>
             <button type="submit" class="btn btn-primary" style="width:100%">Send Message <i class="fas fa-paper-plane"></i></button>
             <p id="formFeedback" style="margin-top: 10px; font-size:0.9rem;"></p>
           </form>
@@ -553,21 +630,19 @@
 <footer>
   <p>© 2025 Mir Md Raihan — Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> | Web Designer & Trainer</p>
   <div style="margin-top: 10px;">
-    <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
-    <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-github"></i></a>
-    <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.facebook.com/TechRashadRaihan/" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/techrashadraihan" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.whatsapp.com/+8801407774872" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
   </div>
 </footer>
 
 <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  // Initialize AOS
   AOS.init({ duration: 800, once: true, offset: 80 });
 
-  // Dark/Light Mode Toggle + LocalStorage
+  // Dark/Light Mode Toggle
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
   const savedTheme = localStorage.getItem('theme');
@@ -620,14 +695,12 @@
   // Mobile Hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('active'));
   });
 
-  // Back to top button
+  // Back to top
   const backBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 500) backBtn.classList.add('show');
@@ -635,15 +708,30 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Download CV simulation (professional)
+  // Progress fill animation on scroll
+  const progressFillElements = document.querySelectorAll('.progress-fill');
+  function animateProgress() {
+    progressFillElements.forEach(el => {
+      const widthVal = el.getAttribute('data-width');
+      if (widthVal && el.style.width !== widthVal + '%') {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.style.width = widthVal + '%';
+        }
+      }
+    });
+  }
+  window.addEventListener('scroll', animateProgress);
+  window.addEventListener('load', animateProgress);
+
+  // Download CV alert
   const downloadBtn = document.getElementById('downloadCVbtn');
   downloadBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    alert("📄 Demo CV: Mir Md Raihan - Web Designer & Developer portfolio ready for download. (Full version will be added)");
-    // in real scenario you would link actual PDF
+    alert("📄 Demo CV: Mir Md Raihan - Full portfolio version includes detailed resume. Contact for official CV.");
   });
 
-  // Contact form feedback (Formspree)
+  // Contact form handler
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
   form.addEventListener('submit', async (e) => {
@@ -669,7 +757,7 @@
     setTimeout(() => feedback.innerHTML = "", 4000);
   });
 
-  // Smooth scroll for all anchor links
+  // Smooth scroll for all internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -681,6 +769,12 @@
       }
     });
   });
+
+  // Optional: custom profile image replacement (user can replace img src)
+  // The image currently uses a nice UI Avatar, but you can replace with any photo.
+  // For demonstration, we set a clean avatar, but you can change the src attribute.
+  // For a real personal photo, just replace the src in the img tag.
 </script>
 </body>
 </html>
+```
