@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MIR MD RAIHAN | Web Designer & Developer</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS CSS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.2s ease;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* Light Theme (default) */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --card-bg: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --border-light: #e2e8f0;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --timeline-dot: #3b82f6;
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --card-bg: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --border-light: #334155;
+      --accent: #60a5fa;
+      --accent-hover: #3b82f6;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+      --glass-bg: rgba(30, 41, 59, 0.8);
+      --timeline-dot: #60a5fa;
+    }
+
+    /* Global styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Glass navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #2f3cf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: transform 0.2s;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section - New Split Layout (Left Text + Right Image) */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+    }
+    .hero .container {
+      width: 100%;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-left {
+      flex: 1.2;
+      text-align: left;
+    }
+    .hero-right {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 50%; 
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      padding: 5px; 
+      box-shadow: var(--shadow-md);
+      transition: transform 0.4s ease;
+    }
+
+    .profile-image-wrapper:hover {
+      transform: scale(1.02);
+    }
+
+    .profile-image-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 50%; 
+      object-fit: contain;
+      aspect-ratio: 1 / 1; 
+    }
+    .profile-image {
+      width: 100%;
+      border-radius: 38% 62% 32% 68% / 52% 42% 58% 48%;
+      display: block;
+      background: var(--bg-secondary);
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      transition: all 0.3s;
+    }
+    /* placeholder avatar if image fails, but we'll use a modern avatar illustration as fallback */
+    .hero-left h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero-left .highlight {
+      color: var(--accent);
+    }
+    .typing-text {
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .hero-desc {
+      max-width: 550px;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+    .btn-group {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px var(--accent);
+    }
+    .btn-outline {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Cards & rest styles (keeping original robust) */
+    .skills-grid, .services-grid, .projects-grid, .values-grid, .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .skill-card, .service-card, .project-card, .value-card, .cert-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      border: 1px solid var(--border-light);
+    }
+    .skill-card:hover, .service-card:hover, .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+    .progress-bar {
+      background: var(--border-light);
+      border-radius: 20px;
+      margin-top: 12px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: var(--accent);
+      width: 0%;
+      height: 100%;
+      border-radius: 20px;
+      transition: width 1.2s ease;
+    }
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .timeline-item {
+      padding: 20px 30px;
+      position: relative;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 30px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -10px;
+      top: 28px;
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .exp-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      color: var(--text-primary);
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    footer {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-left h1 {
+        font-size: 2.2rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left {
+        text-align: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .profile-image-wrapper {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 99;
+    }
+    .back-to-top.show {
+      opacity: 1;
+    }
+    /* fix progress fill animation on scroll */
+    .skill-card .progress-fill {
+      width: 0%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">Rashed Raihan</div>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section: Left side name + bio, Right side picture (fixed layout) -->
+  <section id="home" class="hero">
+    <div class="container" data-aos="fade-up">
+      <div class="hero-grid">
+        <div class="hero-left" data-aos="fade-right">
+          <h1>MIR MD <span class="highlight">RAIHAN</span></h1>
+          <div class="typing-text" id="typingEffect"></div>
+          <p class="hero-desc">Crafting stunning web experiences, training future developers & building digital solutions. 5+ years of turning ideas into reality.</p>
+          <div class="btn-group">
+            <!-- Fixed CV Download Button - Direct Download Link -->
+            <a href="https://drive.google.com/uc?export=download&id=1BCB9mOtMrsQaD2JcTKxhYD3JVDLar0CE" class="btn btn-primary" id="downloadCVbtn" target="_blank"> <i class="fas fa-download"></i> Download CV</a>
+           
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-right" data-aos="fade-left">
+          <div class="profile-image-wrapper">
+            <!-- Professional modern avatar / custom image placeholder -->
+            <img class="profile-image" id="profileImg" src="Image/Rashed Raihan.jpg" alt="Mir Md Raihan">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-right">About Me</h2>
+      <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+        <div data-aos="fade-right">
+          <p style="font-size: 1.1rem; margin-bottom: 1rem;">Hi, I'm a passionate Web Designer & Developer with a strong focus on creating modern, responsive, and user-friendly websites. </p>
+<p>I specialize in designing visually appealing interfaces and developing high-performance websites that help businesses grow online. My goal is not just to build a website, but to create a digital experience that attracts, engages, and converts visitors into customers.</p><br>
+<p>I have experience working with various technologies and tools, ensuring that every project I deliver is clean, fast, and optimized for all devices.</p>
+<br>
+✔ Clean & Professional Design <br>
+✔ Responsive (Mobile-Friendly) Layout<br>
+✔ Fast & SEO-Friendly Website<br>
+✔ Client Satisfaction is My Priority<br><br>
+
+I believe in clear communication, timely delivery, and long-term client relationships. If you're looking for a reliable Web Designer & Developer who can turn your ideas into reality, I'm here to help.
+
+Let's work together and build something amazing!</p>
+          <div style="margin-top: 3rem;">
+            <div class="info-item"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Faridgonj Upzilla, Faridganj, Chandpur, Bangladesh</div>
+            <div class="info-item"><i class="fas fa-envelope" style="color: var(--accent);"></i> techrashad.03@gmail.com</div>
+            <div class="info-item"><i class="fas fa-phone" style="color: var(--accent);"></i> +8801407-774872 (Whatsapp), +8801620-159962</div>
+          </div>
+        </div>
+        <div data-aos="fade-left">
+          <div style="background: var(--accent); border-radius: 30px; padding: 3rem; text-align: center; color: white;">
+            <i class="fas fa-laptop-code" style="font-size: 5rem;"></i>
+            <h3 style="margin: 1rem 0;">5+ Years Experience</h3>
+            <p>100+ Projects Completed | 250+ Students Trained</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
+      <div class="skills-grid">
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-html5" style="font-size: 2rem; color:#e34c26;"></i><h3>HTML5 & CSS3</h3><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-js" style="font-size: 2rem; color:#f7df1e;"></i><h3>JavaScript / ES6</h3><div class="progress-bar"><div class="progress-fill" data-width="90"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-react" style="font-size: 2rem; color:#61dafb;"></i><h3>React.js</h3><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-php" style="font-size: 2rem; color:#a259ff;"></i><h3>PHP</h3><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Timeline -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Academic Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>🎓 BA (Honours)</h3><p>National University Of Bangladesh | Session: 2020-2021</p><span>Department of History & English Literature</span></div>
+        <div class="timeline-item" data-aos="fade-left"><div class="timeline-dot"></div><h3>📘 Higher Secondary (HSC)</h3><p>Gridakalinda Hazera Hasmot Degree Collage | Session: 2018-2019</p><span>Science Group</span></div>
+        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><h3>📖 Secondary School (SSC)</h3><p>Faridganj A.R. Pilot High School | Chandpur </p><span>Session: 2016-2017</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+      <div data-aos="fade-up">
+        <div class="exp-card"><h3><i class="fas fa-chalkboard-user"></i> Assistant Director (PR Academy)</h3><p>2022 - 2025 | Leading training programs, curriculum design & web development workshops.</p></div>
+        <div class="exp-card"><h3><i class="fas fa-laptop-code"></i> Lead Web Trainer</h3><p>2021 - 2025 | Mentored 250+ students in full-stack web technologies.</p></div>
+        <div class="exp-card"><h3><i class="fas fa-school"></i> Senior Teacher (ICT)</h3><p>2021 - 2025 | Taught programming & web design at reputed institute.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">What I Do</h2>
+      <div class="services-grid">
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Web Development</h3><p>Modern, responsive websites & web apps.</p></div>
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-pencil-ruler" style="font-size: 2.5rem; color: var(--accent);"></i><h3>UI/UX Design</h3><p>User-centered design with smooth animations.</p></div>
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-chalkboard-user" style="font-size: 2.5rem; color: var(--accent);"></i><h3>IT Training</h3><p>Corporate & individual web design training.</p></div>
+        <div class="service-card" data-aos="flip-left"><i class="fas fa-chalkboard-user" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Graphic Design</h3><p>Corporate & Social Media Design.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Recent Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-aos="zoom-in-up"><i class="fas fa-mobile-alt" style="font-size: 2rem;"></i><h3>Behance Profile</h3><p>Modern Professional Design.</p><a href="https://www.behance.net/techrashad" style="color: var(--accent);">Live Demo →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+      <div class="cert-grid">
+      <div class="cert-card" data-aos="fade-up"><i class="fab fa-android fa-2x"></i><h3>Android Application Development</h3><p>Government Training Program</p></div>
+      <div class="cert-card" data-aos="fade-up"><i class="fab fa-microsoft fa-2x"></i><h3>Professional Office Course (Basic to Advanced)</h3><p>Government & BRAC Certified</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section id="values" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card" data-aos="flip-up"><i class="fas fa-handshake fa-2x"></i><h3>Integrity</h3><p>Honest & transparent work ethic.</p></div>
+        <div class="value-card" data-aos="flip-up"><i class="fas fa-brain fa-2x"></i><h3>Continuous Learning</h3><p>Always upgrading skills.</p></div>
+        <div class="value-card" data-aos="flip-up"><i class="fas fa-lightbulb fa-2x"></i><h3>Creativity</h3><p>Unique design solutions.</p></div>
+        <div class="value-card" data-aos="flip-up"><i class="fas fa-user-check fa-2x"></i><h3>Client-Centric Approach</h3><p>Putting client needs first and delivering solutions that solve real problems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact + Formspree -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Let's Connect</h2>
+      <div class="contact-grid">
+        <div data-aos="fade-right">
+          <div class="info-item"><i class="fas fa-map-marker-alt fa-lg"></i> In Front of Faridganj Upzilla Gate, Chandpur, Bangladesh</div>
+          <div class="info-item"><i class="fas fa-envelope fa-lg"></i> techrashad.03@gmail.com</div>
+          <div class="info-item"><i class="fas fa-phone-alt fa-lg"></i> +8801407-774872 (Whatsapp)</div>
+          <iframe src="https://maps.google.com/maps?q=Faridganj%2C%20Chandpur&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border-radius: 24px; border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div data-aos="fade-left">
+          <form action="https://formspree.io/f/xqapgnkj" method="POST" id="contactForm">
+            <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div><br>
+            <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div><br>
+            <div class="form-group"><textarea name="message" rows="4" placeholder="Your Message"></textarea></div><br>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send Message <i class="fas fa-paper-plane"></i></button>
+            <p id="formFeedback" style="margin-top: 10px; font-size:0.9rem;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Mir Md Raihan — Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> | Web Designer & Trainer</p>
+  <div style="margin-top: 10px;">
+    <a href="https://www.facebook.com/TechRashadRaihan/" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/techrashadraihan" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/8801407774872" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</footer>
+
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 80 });
+
+  // Dark/Light Mode Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    root.setAttribute('data-theme', 'light');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    if (current === 'dark') {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  });
+
+  // Typing Effect
+  const texts = ["Web Designer", "Trainer", "Developer", "UI Enthusiast"];
+  let idx = 0, charIdx = 0, isDeleting = false;
+  const typingElement = document.getElementById('typingEffect');
+  function typeEffect() {
+    const currentText = texts[idx];
+    if (isDeleting) {
+      typingElement.innerHTML = currentText.substring(0, charIdx--);
+      if (charIdx < 0) {
+        isDeleting = false;
+        idx = (idx + 1) % texts.length;
+        setTimeout(typeEffect, 300);
+        return;
+      }
+    } else {
+      typingElement.innerHTML = currentText.substring(0, charIdx++);
+      if (charIdx > currentText.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1500);
+        return;
+      }
+    }
+    setTimeout(typeEffect, isDeleting ? 60 : 120);
+  }
+  typeEffect();
+
+  // Mobile Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('active'));
+  });
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) backBtn.classList.add('show');
+    else backBtn.classList.remove('show');
+  });
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Progress fill animation on scroll
+  const progressFillElements = document.querySelectorAll('.progress-fill');
+  function animateProgress() {
+    progressFillElements.forEach(el => {
+      const widthVal = el.getAttribute('data-width');
+      if (widthVal && el.style.width !== widthVal + '%') {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.style.width = widthVal + '%';
+        }
+      }
+    });
+  }
+  window.addEventListener('scroll', animateProgress);
+  window.addEventListener('load', animateProgress);
+
+  // Contact form handler
+  const form = document.getElementById('contactForm');
+  const feedback = document.getElementById('formFeedback');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        feedback.innerHTML = "✅ Message sent successfully! I'll get back soon.";
+        feedback.style.color = "#10b981";
+        form.reset();
+      } else {
+        feedback.innerHTML = "❌ Oops! Something went wrong.";
+        feedback.style.color = "#ef4444";
+      }
+    } catch (error) {
+      feedback.innerHTML = "⚠️ Network error. Please try again.";
+    }
+    setTimeout(() => feedback.innerHTML = "", 4000);
+  });
+
+  // Smooth scroll for all internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
