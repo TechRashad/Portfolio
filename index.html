@@ -24,6 +24,29 @@
       scroll-behavior: smooth;
       line-height: 1.5;
     }
+    .typing-text{
+      height: 30px;
+    }
+	  /* Base styles for the grid */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Mobile Responsive Fix */
+  @media (max-width: 768px) {
+    .about-grid {
+      /* Forces each grid item to be 100% width */
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+    
+    .about-content {
+      text-align: center; /* Optional: makes text look better on mobile */
+    }
+  }
 
     /* Light Theme (default) */
     :root {
@@ -481,38 +504,46 @@
 
   <!-- About Section -->
   <section id="about">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-right">About Me</h2>
-      <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-        <div data-aos="fade-right">
-          <p style="font-size: 1.1rem; margin-bottom: 1rem;">Hi, I'm a passionate Web Designer & Developer with a strong focus on creating modern, responsive, and user-friendly websites. </p>
-<p>I specialize in designing visually appealing interfaces and developing high-performance websites that help businesses grow online. My goal is not just to build a website, but to create a digital experience that attracts, engages, and converts visitors into customers.</p><br>
-<p>I have experience working with various technologies and tools, ensuring that every project I deliver is clean, fast, and optimized for all devices.</p>
-<br>
-✔ Clean & Professional Design <br>
-✔ Responsive (Mobile-Friendly) Layout<br>
-✔ Fast & SEO-Friendly Website<br>
-✔ Client Satisfaction is My Priority<br><br>
-
-I believe in clear communication, timely delivery, and long-term client relationships. If you're looking for a reliable Web Designer & Developer who can turn your ideas into reality, I'm here to help.
-
-Let's work together and build something amazing!</p>
-          <div style="margin-top: 3rem;">
-            <div class="info-item"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Faridgonj Upzilla, Faridganj, Chandpur, Bangladesh</div>
-            <div class="info-item"><i class="fas fa-envelope" style="color: var(--accent);"></i> techrashad.03@gmail.com</div>
-            <div class="info-item"><i class="fas fa-phone" style="color: var(--accent);"></i> +8801407-774872 (Whatsapp), +8801620-159962</div>
-          </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-right" style="margin-bottom: 2rem;">About Me</h2>
+    
+    <div class="about-grid">
+      <!-- Left Column: Text Content -->
+      <div class="about-content" data-aos="fade-right">
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+          Hi, I'm a passionate Web Designer & Developer with a strong focus on creating modern, responsive, and user-friendly websites.
+        </p>
+        <p>
+          I specialize in designing visually appealing interfaces and developing high-performance websites that help businesses grow online. My goal is not just to build a website, but to create a digital experience that attracts, engages, and converts visitors into customers.
+        </p>
+        <br>
+        <p>
+          I have experience working with various technologies and tools, ensuring that every project I deliver is clean, fast, and optimized for all devices.
+        </p>
+        <div style="line-height: 1.8; margin-top: 1rem;">
+          ✔ Clean & Professional Design <br>
+          ✔ Responsive (Mobile-Friendly) Layout<br>
+          ✔ Fast & SEO-Friendly Website<br>
+          ✔ Client Satisfaction is My Priority
         </div>
-        <div data-aos="fade-left">
-          <div style="background: var(--accent); border-radius: 30px; padding: 3rem; text-align: center; color: white;">
-            <i class="fas fa-laptop-code" style="font-size: 5rem;"></i>
-            <h3 style="margin: 1rem 0;">5+ Years Experience</h3>
-            <p>100+ Projects Completed | 250+ Students Trained</p>
-          </div>
+        <br>
+        <p>
+          I believe in clear communication, timely delivery, and long-term client relationships. If you're looking for a reliable Web Designer & Developer who can turn your ideas into reality, I'm here to help.
+        </p>
+        <p><strong>Let's work together and build something amazing!</strong></p>
+      </div>
+
+      <!-- Right Column: Experience Box -->
+      <div data-aos="fade-left">
+        <div style="background: var(--accent, #007bff); border-radius: 30px; padding: 3rem; text-align: center; color: white;">
+          <i class="fas fa-laptop-code" style="font-size: 5rem; margin-bottom: 1rem;"></i>
+          <h3 style="margin: 1rem 0; font-size: 2rem;">5+ Years Experience</h3>
+          <p style="font-size: 1.1rem; opacity: 0.9;">100+ Projects Completed | 250+ Students Trained</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Skills Section -->
   <section id="skills" style="background: var(--bg-secondary);">
